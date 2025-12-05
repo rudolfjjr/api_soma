@@ -14,7 +14,7 @@ with col1:
 with col2:
     b = st.number_input("Valor B", value=2.0, step=1.0, format="%.6f")
 
-api_url = st.text_input("API_URL", value="http://127.0.0.1:8000/add")
+api_url = st.secrets.get("API_URL", "http://127.0.0.1:8000/add")
 if st.button("Somar"):
     try:
         payload = {"a": float(a), "b": float(b)}
@@ -29,3 +29,4 @@ if st.button("Somar"):
     except Exception as e:
 
         st.error(f"Erro inesperado: {e}")
+
